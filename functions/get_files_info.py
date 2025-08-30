@@ -14,12 +14,15 @@ def get_files_info(working_directory, directory="."):
 
         files = os.listdir(full_path)
 
-        for file in files:
-            file_path = os.path.join(absolute_path, file)
-            file_size = os.path.getsize(file_path)
-            file_is_dir = os.path.isdir(file_path)
+        try:
+            for file in files:
+                file_path = os.path.join(absolute_path, file)
+                file_size = os.path.getsize(file_path)
+                file_is_dir = os.path.isdir(file_path)
 
-            print(f"- {file}: file_size={file_size} bytes, is_dir={file_is_dir}")
+                print(f"- {file}: file_size={file_size} bytes, is_dir={file_is_dir}")
+        except Exception as e:
+            return f"Error: {e}"
 
     else:
         print(f"Result for '{directory}' directory:")
